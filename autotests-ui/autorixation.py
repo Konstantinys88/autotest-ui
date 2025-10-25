@@ -1,0 +1,44 @@
+# from playwright.sync_api import sync_playwright, expect
+
+# with sync_playwright() as playwright:
+    # chromium = playwright.chromium.launch(headless=False)
+    # page = chromium.new_page()
+    # page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login')
+
+    # email_input = page.locator('//div[@data-testid="login-form-email-input"]//div//input')
+    # email_input.fill('user.name@gmail.com')
+
+    # pasword_input = page.locator('//div[@data-testid="login-form-password-input"]//div//input')
+    # pasword_input.fill('Password')
+
+    # login_button = page.locator('//button[@data-testid="login-page-login-button"]')
+    # login_button.click()
+
+    # wrong_email_or_password_allert = page.locator('//div[@data-testid="login-page-wrong-email-or-password-alert"]')
+    # expect(wrong_email_or_password_allert).to_be_visible()
+    # # expect(wrong_email_or_password_allert).to_be_hidden()
+    # expect(wrong_email_or_password_allert).to_have_text('Wrong email or password')
+
+from playwright.sync_api import sync_playwright, expect
+with sync_playwright() as playwright:
+    browser = playwright.chromium.launch(headless=False)
+    page = browser.new_page()
+    page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
+    login_email_input = page.get_by_test_id('login-form-email-input').locator('input')
+    login_password_input = page.get_by_test_id('login-form-password-input').locator('input')
+    login_button = page.get_by_test_id('login-page-login-button')
+    expect(login_email_input).to_be_visible()
+    expect(login_password_input).to_be_visible()
+    expect(login_button).to_be_visible()
+    registration_link = page.get_by_test_id("login-page-registration-link")
+    registration_link.click()
+    registration_email_input = page.get_by_test_id('registration-form-email-input').locator('input')
+    registration_password_input = page.get_by_test_id('registration-form-password-input').locator('input')
+    registration_button = page.get_by_test_id('registration-page-registration-button')
+    expect(registration_password_input).to_be_visible()
+    expect(registration_email_input).to_be_visible()
+    expect(registration_button).to_be_visible()
+
+
+
+    page.wait_for_timeout(5000)
