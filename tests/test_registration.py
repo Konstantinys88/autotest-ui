@@ -22,9 +22,8 @@ def test_wrong_email_or_password_authorization(chromium_page: Page):
     expect(wrong_email_or_password_alert).to_be_visible()
     expect(wrong_email_or_password_alert).to_have_text("Wrong email or password")
     
-import pytest
-from playwright.sync_api import expect, Page
-
+    chromium_page.wait_for_timeout(1000)
+    
 
 @pytest.mark.regression
 @pytest.mark.registration
@@ -45,4 +44,6 @@ def test_successful_registration(chromium_page: Page):  # Теперь испо�
 
     dashboard_title = chromium_page.get_by_test_id('dashboard-toolbar-title-text')
     expect(dashboard_title).to_be_visible()
+    
+    chromium_page.wait_for_timeout(1000)
 
