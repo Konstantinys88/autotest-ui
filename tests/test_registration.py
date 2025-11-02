@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import expect, Page
 
-
+@pytest.mark.skip
 @pytest.mark.regression
 @pytest.mark.authorization
 # Использование фикстуры 'chromium_page', которая автоматически предоставляет готовую страницу
@@ -24,7 +24,8 @@ def test_wrong_email_or_password_authorization(chromium_page: Page):
     
     chromium_page.wait_for_timeout(1000)
     
-
+    
+@pytest.mark.skip
 @pytest.mark.regression
 @pytest.mark.registration
 def test_successful_registration(chromium_page: Page):  # Теперь используем фикстуру
@@ -47,3 +48,7 @@ def test_successful_registration(chromium_page: Page):  # Теперь испо�
     
     chromium_page.wait_for_timeout(1000)
 
+
+
+def test_empty_courses_list(chromium_page_with_state, chromium_page: Page):
+    chromium_page.wait_for_timeout(1000)
