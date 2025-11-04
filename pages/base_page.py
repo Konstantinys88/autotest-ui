@@ -8,6 +8,6 @@ class BasePage():
     def visit(self, url: str):
         self.page.goto(url, wait_until="networkidle")
         
-    def reload(self):
-        self.page.reload(wait_until="networkidle")    
+    def reload(self):  # Метод для перезагрузки страницы
+        self.page.reload(wait_until='domcontentloaded')
             
