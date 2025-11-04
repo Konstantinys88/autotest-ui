@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import expect, Page
 
 class BasePage():
-    def __init__(self, page, Page):
+    def __init__(self, page: Page):
         self.page = page
         
     def visit(self, url: str):
