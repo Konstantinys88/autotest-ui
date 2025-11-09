@@ -9,7 +9,7 @@ class RegistrationPage(BasePage):
         self.username_input = page.get_by_test_id('registration-form-username-input').locator('input')
         self.password_input = page.get_by_test_id('registration-form-password-input').locator('input')
         self.registration_button = page.get_by_test_id('registration-page-registration-button')
-        self.dashboard_title = page.get_by_test_id('dashboard-toolbar-title-text')
+        # self.dashboard_title = page.get_by_test_id('dashboard-toolbar-title-text')
         
         
     def fill_registration_form(self, email: str, username: str, password: str):
