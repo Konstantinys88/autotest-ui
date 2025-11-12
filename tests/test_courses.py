@@ -23,5 +23,6 @@ def test_create_course(create_course_page: CreateCoursePage, courses_list_page: 
     
     courses_list_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
     courses_list_page.check_visible_courses_title()
-    courses_list_page.check_visible_create_courses_button()
-    courses_list_page.check_visible_course_card(0, 'Playwright', "100", "10", "2 weeks")
+    courses_list_page.check_visible_create_course_button()
+    # courses_list_page.check_visible_course_card(0, 'Playwright', "100", "10", "2 weeks")
+    courses_list_page.course_view.check_visible(0, 'Playwright', "100", "10", "2 weeks")
