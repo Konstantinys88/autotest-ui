@@ -1,11 +1,26 @@
 import pytest
+import allure
 from playwright.sync_api import expect, Page
 from pages.login_page import LoginPage
 from pages.registration_page import RegistrationPage
 from pages.dashboard_page import DashboardPage
 from pages.courses_list_page import CoursesListPage
 from pages.create_course_page import CreateCoursePage
+from tools.allure.tags import AllureTag
+from tools.allure.epics import AllureEpick
+from tools.allure.stories import AllureStories
+from tools.allure.features import AllureFeature
 
+
+
+
+
+@pytest.mark.regression
+@allure.title('Создание курса')
+@allure.epic(AllureEpick.LMS)
+@allure.feature(AllureFeature.COURSES)
+@allure.story(AllureStories.STORIES)
+@allure.tag(AllureTag.REGRESSION)
 def test_create_course(create_course_page: CreateCoursePage, courses_list_page: CoursesListPage):
     create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
     create_course_page.check_visible_create_course_title()
