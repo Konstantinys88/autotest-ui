@@ -13,9 +13,6 @@ from tools.allure.features import AllureFeature
 from allure_commons.types import Severity
 
 
-
-
-
 @pytest.mark.regression
 @allure.title('Создание курса')
 @allure.epic(AllureEpick.LMS)
@@ -24,8 +21,8 @@ from allure_commons.types import Severity
 @allure.tag(AllureTag.REGRESSION)
 @allure.severity(Severity.BLOCKER)
 def test_create_course(create_course_page: CreateCoursePage, courses_list_page: CoursesListPage):
-    with allure.step('Open: https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create'):
-        create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
+    # with allure.step('Open: https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create'):
+    create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
     with allure.step('проверка заголовка'):
         create_course_page.check_visible_create_course_title()
     create_course_page.check_disabled_create_course_button()

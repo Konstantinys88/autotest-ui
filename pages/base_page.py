@@ -1,4 +1,5 @@
 import pytest
+import allure
 from playwright.sync_api import expect, Page
 
 class BasePage():
@@ -6,8 +7,10 @@ class BasePage():
         self.page = page
         
     def visit(self, url: str):
-        self.page.goto(url, wait_until="networkidle")
+        with allure.step(f"Открываем страницу {url}"):
+            self.page.goto(url, wait_until="networkidle")
         
     def reload(self):  # Метод для перезагрузки страницы
-        self.page.reload(wait_until='domcontentloaded')
+        with allure.step(f"Перезагрузка страницы {self.page.url}"):
+            self.page.reload(wait_until='domcontentloaded')
             
